@@ -1,0 +1,153 @@
+/* Cyberpunk 2077 Landing Page Styles */
+
+:root {
+  --neon-pink: #ff007f;
+  --neon-white: #ffffff;
+  --neon-cyan: #00ffff;
+  --dark-bg: #0a0a0f;
+  --darker-bg: #050507;
+  --purple-glow: #8a2be2;
+  --yellow-accent: #ffff00;
+  --grid-color: rgba(255, 0, 127, 0.1);
+  --text-shadow-neon: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 40px currentColor;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--dark-bg);
+  color: var(--neon-white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--neon-pink);
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-text {
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.glitch::after {
+}
+
+@keyframes glitch {
+  2%, 64% { transform: translate(2px, 0) skew(0deg); }
+  4%, 60% { transform: translate(-2px, 0) skew(0deg); }
+  62% { transform: translate(0, 0) skew(5deg); }
+}
+
+@keyframes glitchTop {
+  2%, 64% { transform: translate(2px, -2px); }
+  4%, 60% { transform: translate(-2px, 2px); }
+  62% { transform: translate(13px, -1px) skew(-13deg); }
+}
+
+@keyframes glitchBottom {
+  2%, 64% { transform: translate(-2px, 0); }
+  4%, 60% { transform: translate(-2px, 0); }
+  62% { transform: translate(-22px, 5px) skew(21deg); }
+}
+
+.neon-text {
+  background: linear-gradient(45deg, var(--neon-pink), var(--neon-cyan), var(--yellow-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  animation: neonGlow 2s ease-in-out infinite alternate;
+  display: block;
+}
+
+@keyframes neonGlow {
+  from {
+    filter: drop-shadow(0 0 20px var(--neon-pink));
+  }
+  to {
+    filter: drop-shadow(0 0 40px var(--neon-cyan));
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+.highlight {
+
+/* Clickable title animations for entire heading */
+.hero-title.clickable-title {
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+}
+
+.hero-title.clickable-title:hover {
+    transform: scale(1.02);
+    filter: drop-shadow(0 0 30px var(--neon-pink));
+}
+
+.hero-title.clickable-title:active {
+    transform: scale(0.98);
+}
+
+/* Enhanced glitch effect for clickable title */
+.hero-title.clickable-title .glitch {
+    animation-duration: 1.5s;
+}
+
+.hero-title.clickable-title:hover .glitch {
+    animation-duration: 0.8s;
+}
+
+/* Alphabet cycling animation keyframes */
+@keyframes alphabetCycle {
+    0% { 
+        text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+    }
+    50% { 
+        text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+    }
+    100% { 
+        text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+    }
+}
+
+.hero-title.clickable-title.animating {
+    animation: alphabetCycle 1.6s ease-in-out;
+}
+

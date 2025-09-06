@@ -1,0 +1,29 @@
+{
+  "name": "legyn-cyberpunk-landing",
+  "version": "1.0.0",
+  "description": "Cyberpunk 2077 inspired landing page for LEGYN community",
+  "main": "cyberpunk-landing.html",
+  "scripts": {
+    "dev": "live-server --port=3000 --open=cyberpunk-landing.html --no-browser",
+    "start": "live-server --port=3000 --open=cyberpunk-landing.html",
+    "build": "echo 'No build process needed for static files'",
+    "lint": "echo 'No linting configured'"
+  },
+  "keywords": [
+    "cyberpunk",
+    "landing-page",
+    "community",
+    "startup",
+    "legyn"
+  ],
+  "author": "LEGYN Community",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/legyn/cyberpunk-landing.git"
+  },
+  "homepage": "https://legyn.com"
+}
