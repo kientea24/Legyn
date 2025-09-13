@@ -2,6 +2,83 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Bounty Board Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const bountyCards = document.querySelectorAll('.bounty-card');
+    const sortSelect = document.querySelector('.sort-select');
+    const claimButtons = document.querySelectorAll('.bounty-claim-btn');
+    
+    // Filter bounties by category
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active state
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            bountyCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+    
+    // Sort bounties
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            const sortValue = this.value;
+            const bountiesGrid = document.querySelector('.bounties-grid');
+            const cards = Array.from(bountyCards);
+            
+            cards.sort((a, b) => {
+                if (sortValue === 'reward') {
+                    const aReward = parseFloat(a.querySelector('.reward-amount').textContent.replace('$', '').replace(',', ''));
+                    const bReward = parseFloat(b.querySelector('.reward-amount').textContent.replace('$', '').replace(',', ''));
+                    return bReward - aReward;
+                } else if (sortValue === 'urgent') {
+                    const urgencyOrder = { 'urgent': 0, 'high': 1, 'medium': 2, 'low': 3 };
+                    const aUrgency = a.querySelector('.bounty-urgency').className.split(' ')[1];
+                    const bUrgency = b.querySelector('.bounty-urgency').className.split(' ')[1];
+                    return urgencyOrder[aUrgency] - urgencyOrder[bUrgency];
+                }
+                return 0;
+            });
+            
+            // Re-append sorted cards
+            cards.forEach(card => {
+                bountiesGrid.appendChild(card);
+            });
+        });
+    }
+    
+    // Claim bounty animation
+    claimButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const card = this.closest('.bounty-card');
+            
+            // Add claiming animation
+            this.textContent = 'CLAIMING...';
+            this.style.background = 'linear-gradient(45deg, var(--neon-cyan), var(--purple-glow))';
+            
+            setTimeout(() => {
+                this.textContent = 'CLAIMED!';
+                this.disabled = true;
+                this.style.opacity = '0.5';
+                this.style.cursor = 'not-allowed';
+                
+                // Add success glow to card
+                card.style.borderColor = 'var(--neon-cyan)';
+                card.style.boxShadow = '0 0 50px rgba(0, 255, 255, 0.5)';
+            }, 1500);
+        });
+    });
+    
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
