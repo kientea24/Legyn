@@ -36,6 +36,22 @@ body {
   background: rgba(10, 10, 15, 0.9);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--neon-pink);
+  transition: all 0.3s ease;
+}
+
+/* Transparent navbar when at top */
+.navbar.transparent {
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
+}
+
+/* Normal navbar when scrolled */
+.navbar.scrolled {
+  background: rgba(10, 10, 15, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--neon-pink);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 
 .nav-container {

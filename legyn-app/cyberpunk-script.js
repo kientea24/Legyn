@@ -2,6 +2,12 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     
+    // Initialize navbar transparency state
+    const navbar = document.querySelector('.navbar');
+    if (navbar && window.pageYOffset === 0) {
+        navbar.classList.add('transparent');
+    }
+    
     // Bounty Board Functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const bountyCards = document.querySelectorAll('.bounty-card');
@@ -104,18 +110,33 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Parallax Effect for Hero Section
+    // Parallax Effect for Hero Section and Navbar Transparency
     window.addEventListener('scroll', function() {
         const scrolled = window.pageYOffset;
         const heroParticles = document.querySelector('.neon-particles');
         const gridOverlay = document.querySelector('.grid-overlay');
+        const navbar = document.querySelector('.navbar');
         
+        // Parallax effects
         if (heroParticles) {
             heroParticles.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
         
         if (gridOverlay) {
             gridOverlay.style.transform = `translate(${scrolled * 0.1}px, ${scrolled * 0.1}px)`;
+        }
+        
+        // Navbar transparency logic
+        if (navbar) {
+            if (scrolled === 0) {
+                // At the top - make completely transparent
+                navbar.classList.remove('scrolled');
+                navbar.classList.add('transparent');
+            } else {
+                // Scrolled down - make normal with background
+                navbar.classList.remove('transparent');
+                navbar.classList.add('scrolled');
+            }
         }
     });
     
