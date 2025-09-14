@@ -74,3 +74,5 @@ Key style guide highlights:
 - **Responsive Design**: Mobile-first approach with defined breakpoints
 
 Always ensure new UI elements follow the established design patterns and use the defined CSS variables.
+
+**IMPORTANT**: Do not use emojis in any HTML, CSS, or JavaScript code. Use text symbols, icons, or CSS-styled elements instead to maintain the cyberpunk aesthetic.
