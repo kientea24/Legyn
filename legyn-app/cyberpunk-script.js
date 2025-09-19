@@ -1,5 +1,57 @@
 // Cyberpunk 2077 Landing Page JavaScript
 
+// View Mission Statement function
+function viewMissionStatement() {
+    // Create modal overlay
+    const modal = document.createElement('div');
+    modal.className = 'mission-modal';
+    modal.innerHTML = `
+        <div class="mission-modal-content">
+            <button class="modal-close" onclick="closeMissionModal()">×</button>
+            <h2 class="modal-title">
+                <span class="title-line">//</span>
+                MISSION STATEMENT
+                <span class="title-line">//</span>
+            </h2>
+            <div class="modal-body">
+                <p class="mission-text">
+                    We are the renegades of the digital frontier.
+                    LEGYN exists to democratize the startup ecosystem,
+                    giving power back to the builders, the dreamers, and the rebels.
+                </p>
+                <p class="mission-text">
+                    We believe that great ideas shouldn't die in corporate bureaucracy or behind closed doors.
+                    We build in public, fail in public, and succeed together.
+                </p>
+                <p class="mission-text">
+                    Our mission is simple: Create a world where anyone with passion and determination
+                    can build something meaningful, regardless of their background, connections, or capital.
+                </p>
+                <p class="mission-text highlight">
+                    Together, we're not just building products—we're building the future.
+                </p>
+            </div>
+            <button class="btn-primary" onclick="closeMissionModal()">CLOSE</button>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    // Add animation
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+}
+
+function closeMissionModal() {
+    const modal = document.querySelector('.mission-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize navbar transparency state
