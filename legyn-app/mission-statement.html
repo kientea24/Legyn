@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGYN - Mission Statement</title>
+    <link rel="stylesheet" href="cyberpunk-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            background: var(--dark-bg);
+        }
+        
+        .mission-page-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 2rem;
+            box-sizing: border-box;
+        }
+        
+        .mission-page-content {
+            background: linear-gradient(135deg, rgba(10, 10, 15, 0.98), rgba(20, 20, 30, 0.98));
+            border: 1px solid var(--neon-cyan);
+            border-radius: 0;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow:
+                0 0 50px rgba(0, 255, 255, 0.3),
+                inset 0 0 30px rgba(255, 0, 127, 0.1);
+        }
+        
+        .mission-page-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: 1px solid var(--neon-pink);
+            color: var(--neon-pink);
+            font-size: 2rem;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+        
+        .mission-page-close:hover {
+            background: var(--neon-pink);
+            color: var(--dark-bg);
+            transform: rotate(90deg);
+        }
+        
+        .mission-page-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-white);
+            margin-bottom: 2rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .mission-page-body {
+            margin: 2rem 0;
+        }
+        
+        .mission-page-text {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .mission-page-text.highlight {
+            color: var(--neon-cyan);
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .mission-page-text.tagline {
+            color: var(--neon-pink);
+            font-size: 1.4rem;
+            font-weight: 700;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+            padding: 1rem;
+            margin-top: 2rem;
+            background: rgba(255, 0, 127, 0.05);
+        }
+        
+        .mission-page-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .mission-page-back {
+            display: inline-block;
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .mission-page-back:hover {
+            color: var(--neon-white);
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+        
+        .title-line {
+            color: var(--neon-cyan);
+            font-size: 1.5rem;
+        }
+        
+        /* Custom scrollbar for the content area */
+        .mission-page-content::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .mission-page-content::-webkit-scrollbar-track {
+            background: rgba(10, 10, 15, 0.5);
+        }
+        
+        .mission-page-content::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 4px;
+        }
+        
+        .mission-page-content::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-pink);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .mission-page-container {
+                padding: 1rem;
+            }
+            
+            .mission-page-content {
+                padding: 2rem;
+                max-height: 95vh;
+            }
+            
+            .mission-page-title {
+                font-size: 2rem;
+            }
+            
+            .mission-page-text {
+                font-size: 1rem;
+            }
+            
+            .mission-page-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mission-page-container">
+        <div class="mission-page-content">
+            <a href="cyberpunk-landing.html" class="mission-page-close">×</a>
+            
+            <h1 class="mission-page-title">
+                <span class="title-line">//</span>
+                Legyn: Where Great Ideas Come to Life
+                <span class="title-line">//</span>
+            </h1>
+            
+            <div class="mission-page-body">
+
+                <p class="mission-page-text highlight">
+                    Every visionary starts somewhere. Every breakthrough begins with a single spark. 
+                </p>
+                <p class="mission-page-text">
+                    Legyn was born for the dreamers who've always carried brilliant ideas but needed the right
+                    community to bring them to life. We're here for those who've been mistreated or abandoned by
+                    corporate machines that never valued their potential. We're here for the passionate minds feeling
+                    unfulfilled in their daily grind, yearning to be part of something bigger than themselves. We're here for
+                    the curious souls who just want to gain real experience while having genuine fun – because learning
+                    shouldn't feel like punishment.
+                </p>
+                <p class="mission-page-text highlight">
+                    This is your launchpad.
+                </p>
+                <p class="mission-page-text">
+                    At Legyn, we're rewriting the rules with fearless transparency. We build in public because we're not
+                    cowards hiding behind NDAs and corporate walls. We welcome competition – it sharpens us, validates
+                    our vision, and proves that the best ideas rise to the top through merit, not secrecy. While others
+                    clutch their projects in the shadows, terrified someone might build it better, we're out here showing
+                    our work, sharing our progress, and letting the world see exactly how innovation happens.
+                </p>
+                
+                <p class="mission-page-text">
+                    We're bringing joy back to building, making open-source development an adventure rather than a chore, and
+                    proving that bold transparency beats fearful secrecy every single time. We're building something deeper here – 
+                    a community that genuinely celebrates each other's growth. Every breakthrough, every lesson learned, every step 
+                    forward gets recognized and cheered on. We don't just talk about helping each other; we show up, we contribute,
+                    we lift each other up in whatever way we can. Because when everyone wins, we all win bigger.
+                </p>
+                <p class="mission-page-text highlight">
+                    We've all been there.
+                </p>
+                <p class="mission-page-text">
+                    You start a project with fire in your eyes and unstoppable momentum. Then life happens. Motivation
+                    wanes. The vision feels impossible to reach alone. That brilliant idea sits gathering digital dust while
+                    you wonder "what if?"
+                </p>
+                <p class="mission-page-text">
+                    Legyn is your 'what if' answered. 
+                </p>
+                
+                <p class="mission-page-text highlight">
+                   Ready to turn potential into reality?
+                </p>
+                
+                <p class="mission-page-text">
+                    Stop letting great ideas remain just ideas. Post your project on Legyn and watch a community of
+                    builders, dreamers, and innovators rally around your vision. Together, we'll transform your spark into
+                    something extraordinary.
+                </p>
+                
+                <p class="mission-page-text highlight">
+                    Your next chapter starts here. Your community is waiting.
+                </p>
+                
+                <p class="mission-page-text tagline">
+                    Join Legyn – Where ideas find their tribe.
+                </p>
+                
+                <div class="mission-page-actions">
+                    <button class="btn-primary large">
+                        <span>START YOUR PROJECT</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn-secondary large">
+                        <span>JOIN COMMUNITY</span>
+                    </button>
+                </div>
+                
+                <a href="cyberpunk-landing.html" class="mission-page-back">
+                    ← Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="cyberpunk-script.js"></script>
+</body>
+</html>

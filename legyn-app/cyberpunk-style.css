@@ -717,6 +717,51 @@ body {
   margin-top: 2rem;
 }
 
+.modal-links {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 0, 127, 0.3);
+}
+
+.full-mission-link {
+  display: inline-block;
+  color: var(--neon-pink);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid var(--neon-pink);
+  background: transparent;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.full-mission-link:hover {
+  color: var(--dark-bg);
+  background: var(--neon-pink);
+  box-shadow: 0 0 20px rgba(255, 0, 127, 0.5);
+  text-shadow: none;
+}
+
+.full-mission-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.full-mission-link:hover::before {
+  left: 100%;
+}
+
 /* Projects Section */
 .projects {
   background: linear-gradient(180deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
@@ -1789,4 +1834,201 @@ body {
 
 .hero-title.clickable-title.animating {
   animation: alphabetCycle 1.6s ease-in-out;
+}
+
+/* Mission Statement Page Styles */
+.mission-statement-page {
+  min-height: 100vh;
+  padding-top: 8rem;
+  position: relative;
+  background: var(--dark-bg);
+}
+
+.mission-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.mission-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--neon-white);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  text-shadow: var(--text-shadow-neon);
+}
+
+.mission-subtitle {
+  font-size: 1.5rem;
+  color: var(--neon-cyan);
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+}
+
+.mission-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.mission-section {
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(10, 10, 15, 0.8), rgba(20, 20, 30, 0.8));
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 0;
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.mission-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  opacity: 0.7;
+}
+
+.mission-section.highlight-section {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 30px rgba(255, 0, 127, 0.2);
+}
+
+.mission-section.highlight-section::before {
+  background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+}
+
+.mission-section.cta-section {
+  border-color: var(--yellow-accent);
+  text-align: center;
+}
+
+.mission-section.cta-section::before {
+  background: linear-gradient(90deg, transparent, var(--yellow-accent), transparent);
+}
+
+.section-heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--neon-white);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.mission-text {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.mission-text.highlight {
+  color: var(--neon-cyan);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  border-top: 1px solid rgba(0, 255, 255, 0.3);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mission-text.tagline {
+  font-style: italic;
+  color: var(--neon-pink);
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 2rem;
+  text-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+}
+
+.neon-text {
+  color: var(--neon-cyan);
+  text-shadow: var(--text-shadow-neon);
+}
+
+.mission-footer {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(5, 5, 7, 0.9), rgba(15, 15, 25, 0.9));
+  border: 1px solid var(--neon-pink);
+  border-radius: 0;
+}
+
+.mission-actions {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.back-link {
+  display: inline-block;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.back-link:hover {
+  color: var(--neon-white);
+  border-bottom-color: var(--neon-cyan);
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+/* Responsive Design for Mission Statement Page */
+@media (max-width: 768px) {
+  .mission-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mission-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .mission-content {
+    padding: 0 1rem;
+  }
+
+  .mission-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .mission-text {
+    font-size: 1rem;
+  }
+
+  .mission-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mission-footer {
+    padding: 2rem 1rem;
+  }
 }
