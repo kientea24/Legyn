@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGYN - Projects</title>
+    <link rel="stylesheet" href="cyberpunk-style.css">
+    <link rel="stylesheet" href="projects-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="cyberpunk-landing.html" style="text-decoration: none;">
+                    <span class="logo-text">LEGYN</span>
+                    <span class="logo-subtitle">// COMMUNITY BUILT</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <a href="#bounties" class="nav-link">BOUNTIES</a>
+                <a href="projects.html" class="nav-link active">PROJECTS</a>
+                <a href="cyberpunk-landing.html#community" class="nav-link">COMMUNITY</a>
+                <a href="cyberpunk-landing.html#about" class="nav-link">ABOUT</a>
+                <button class="nav-button">JOIN NOW</button>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero Section - Matching Landing Page -->
+    <section class="projects-hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="neon-particles"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="glitch" data-text="ACTIVE">ACTIVE</span>
+                    <span class="glitch" data-text="PROJECTS">PROJECTS</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Discover revolutionary <span class="highlight">community-built projects</span>
+                    changing the world one commit at a time
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">127</span>
+                        <span class="stat-label">Active Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">8.2K</span>
+                        <span class="stat-label">Contributors</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">45</span>
+                        <span class="stat-label">Launched</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Filter Bar -->
+    <section class="projects-filters">
+        <div class="section-container">
+            <div class="filters-wrapper">
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="startup">STARTUPS</button>
+                    <button class="filter-btn" data-filter="idea">IDEAS</button>
+                    <button class="filter-btn" data-filter="recruiting">RECRUITING</button>
+                </div>
+                <div class="sort-group">
+                    <select class="sort-select">
+                        <option value="trending">Most Active</option>
+                        <option value="progress">By Progress</option>
+                        <option value="contributors">Most Contributors</option>
+                        <option value="recent">Recently Added</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects List -->
+    <section class="projects-section">
+        <div class="section-container">
+            <div class="projects-list">
+
+                <!-- Project 1: NeuroLink AI -->
+                <div class="project-row" data-category="startup">
+                    <div class="project-main" onclick="toggleProject(this)">
+                        <div class="project-status">
+                            <div class="status-indicator active"></div>
+                            <span class="status-text">ACTIVE</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h2 class="project-title">NeuroLink AI</h2>
+                                <span class="project-type startup">STARTUP</span>
+                            </div>
+                            <p class="project-description">Revolutionary brain-computer interface enabling seamless human-AI collaboration through neural signal processing</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Contributors:</span>
+                                    <span class="meta-value">47</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stars:</span>
+                                    <span class="meta-value">2.4k</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stage:</span>
+                                    <span class="meta-value">Beta Testing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-progress-mini">
+                            <div class="progress-circle" data-progress="75">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke="var(--neon-cyan)" stroke-width="3" fill="transparent" r="25" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-text">75%</span>
+                            </div>
+                        </div>
+                        <div class="expand-arrow">
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <!-- Expandable Content -->
+                    <div class="project-details">
+                        <div class="details-grid">
+                            <!-- Progress Tracker -->
+                            <div class="detail-section progress-section">
+                                <h3>Development Progress</h3>
+                                <div class="progress-tracker">
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Idea</h4>
+                                            <p>Concept validated</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Prototype</h4>
+                                            <p>MVP built and tested</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Development</h4>
+                                            <p>Core features implemented</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage active">
+                                        <div class="stage-circle">◆</div>
+                                        <div class="stage-info">
+                                            <h4>Beta Testing</h4>
+                                            <p>User feedback collection</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage">
+                                        <div class="stage-circle">○</div>
+                                        <div class="stage-info">
+                                            <h4>Launch</h4>
+                                            <p>Public release</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Project Details -->
+                            <div class="detail-section info-section">
+                                <h3>Project Information</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <h4>Tech Stack</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">Python</span>
+                                            <span class="tech-tag">TensorFlow</span>
+                                            <span class="tech-tag">React</span>
+                                            <span class="tech-tag">C++</span>
+                                            <span class="tech-tag">WebGL</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <h4>Looking For</h4>
+                                        <ul class="needs-list">
+                                            <li>Machine Learning Engineers</li>
+                                            <li>Neuroscience Researchers</li>
+                                            <li>Hardware Engineers</li>
+                                            <li>UI/UX Designers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Top Contributors Leaderboard -->
+                            <div class="detail-section leaderboard-section">
+                                <h3>Top Contributors</h3>
+                                <div class="contributors-leaderboard">
+                                    <div class="contributor-item rank-1">
+                                        <div class="contributor-rank">1</div>
+                                        <div class="contributor-avatar">
+                                            <span>AK</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Alex Kim</div>
+                                            <div class="contributor-role">Lead Developer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">247</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-2">
+                                        <div class="contributor-rank">2</div>
+                                        <div class="contributor-avatar">
+                                            <span>SM</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Sarah Martinez</div>
+                                            <div class="contributor-role">ML Engineer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">189</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-3">
+                                        <div class="contributor-rank">3</div>
+                                        <div class="contributor-avatar">
+                                            <span>DL</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">David Liu</div>
+                                            <div class="contributor-role">Hardware Engineer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">156</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item">
+                                        <div class="contributor-rank">4</div>
+                                        <div class="contributor-avatar">
+                                            <span>JR</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Jessica Rodriguez</div>
+                                            <div class="contributor-role">UI Designer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">134</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item">
+                                        <div class="contributor-rank">5</div>
+                                        <div class="contributor-avatar">
+                                            <span>MJ</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Mike Johnson</div>
+                                            <div class="contributor-role">Backend Dev</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">98</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Social & Links -->
+                            <div class="detail-section links-section">
+                                <h3>Project Links</h3>
+                                <div class="project-links">
+                                    <a href="#" class="project-link github">
+                                        <div class="link-icon">⚡</div>
+                                        <span>GitHub Repository</span>
+                                    </a>
+                                    <a href="#" class="project-link discord">
+                                        <div class="link-icon">◆</div>
+                                        <span>Discord Community</span>
+                                    </a>
+                                    <a href="#" class="project-link docs">
+                                        <div class="link-icon">📋</div>
+                                        <span>Documentation</span>
+                                    </a>
+                                    <a href="#" class="project-link figma">
+                                        <div class="link-icon">🎨</div>
+                                        <span>Design Files</span>
+                                    </a>
+                                    <a href="#" class="project-link website">
+                                        <div class="link-icon">🌐</div>
+                                        <span>Live Demo</span>
+                                    </a>
+                                    <a href="#" class="project-link twitter">
+                                        <div class="link-icon">🐦</div>
+                                        <span>Twitter Updates</span>
+                                    </a>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn-primary">JOIN PROJECT</button>
+                                    <button class="btn-secondary">CONTRIBUTE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: CyberVault -->
+                <div class="project-row" data-category="startup">
+                    <div class="project-main" onclick="toggleProject(this)">
+                        <div class="project-status">
+                            <div class="status-indicator recruiting"></div>
+                            <span class="status-text">RECRUITING</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h2 class="project-title">CyberVault</h2>
+                                <span class="project-type startup">STARTUP</span>
+                            </div>
+                            <p class="project-description">Next-generation decentralized storage platform with quantum-resistant encryption and IPFS integration</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Contributors:</span>
+                                    <span class="meta-value">23</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stars:</span>
+                                    <span class="meta-value">1.8k</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stage:</span>
+                                    <span class="meta-value">Development</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-progress-mini">
+                            <div class="progress-circle" data-progress="45">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke="var(--neon-cyan)" stroke-width="3" fill="transparent" r="25" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-text">45%</span>
+                            </div>
+                        </div>
+                        <div class="expand-arrow">
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details">
+                        <div class="details-grid">
+                            <!-- Progress Tracker -->
+                            <div class="detail-section progress-section">
+                                <h3>Development Progress</h3>
+                                <div class="progress-tracker">
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Idea</h4>
+                                            <p>Concept validated</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Prototype</h4>
+                                            <p>Core architecture designed</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage active">
+                                        <div class="stage-circle">◆</div>
+                                        <div class="stage-info">
+                                            <h4>Development</h4>
+                                            <p>Building core features</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage">
+                                        <div class="stage-circle">○</div>
+                                        <div class="stage-info">
+                                            <h4>Beta Testing</h4>
+                                            <p>Community testing</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage">
+                                        <div class="stage-circle">○</div>
+                                        <div class="stage-info">
+                                            <h4>Launch</h4>
+                                            <p>Public release</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section info-section">
+                                <h3>Project Information</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <h4>Tech Stack</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">Rust</span>
+                                            <span class="tech-tag">Blockchain</span>
+                                            <span class="tech-tag">IPFS</span>
+                                            <span class="tech-tag">Go</span>
+                                            <span class="tech-tag">React</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <h4>Looking For</h4>
+                                        <ul class="needs-list">
+                                            <li>Blockchain Developers</li>
+                                            <li>Cryptography Experts</li>
+                                            <li>Frontend Developers</li>
+                                            <li>Security Researchers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section leaderboard-section">
+                                <h3>Top Contributors</h3>
+                                <div class="contributors-leaderboard">
+                                    <div class="contributor-item rank-1">
+                                        <div class="contributor-rank">1</div>
+                                        <div class="contributor-avatar">
+                                            <span>LC</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Luna Chen</div>
+                                            <div class="contributor-role">Blockchain Dev</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">203</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-2">
+                                        <div class="contributor-rank">2</div>
+                                        <div class="contributor-avatar">
+                                            <span>RT</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Raj Thakur</div>
+                                            <div class="contributor-role">Crypto Expert</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">167</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-3">
+                                        <div class="contributor-rank">3</div>
+                                        <div class="contributor-avatar">
+                                            <span>EB</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Emma Brown</div>
+                                            <div class="contributor-role">Frontend Dev</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">134</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section links-section">
+                                <h3>Project Links</h3>
+                                <div class="project-links">
+                                    <a href="#" class="project-link github">
+                                        <div class="link-icon">⚡</div>
+                                        <span>GitHub Repository</span>
+                                    </a>
+                                    <a href="#" class="project-link discord">
+                                        <div class="link-icon">◆</div>
+                                        <span>Discord Community</span>
+                                    </a>
+                                    <a href="#" class="project-link docs">
+                                        <div class="link-icon">📋</div>
+                                        <span>Documentation</span>
+                                    </a>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn-primary">JOIN PROJECT</button>
+                                    <button class="btn-secondary">CONTRIBUTE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: QuantumOS -->
+                <div class="project-row" data-category="startup">
+                    <div class="project-main" onclick="toggleProject(this)">
+                        <div class="project-status">
+                            <div class="status-indicator active"></div>
+                            <span class="status-text">ACTIVE</span>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-header">
+                                <h2 class="project-title">QuantumOS</h2>
+                                <span class="project-type startup">STARTUP</span>
+                            </div>
+                            <p class="project-description">Revolutionary operating system designed specifically for quantum computing environments and hybrid classical-quantum workflows</p>
+                            <div class="project-meta">
+                                <div class="meta-item">
+                                    <span class="meta-label">Contributors:</span>
+                                    <span class="meta-value">89</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stars:</span>
+                                    <span class="meta-value">3.2k</span>
+                                </div>
+                                <div class="meta-item">
+                                    <span class="meta-label">Stage:</span>
+                                    <span class="meta-value">Launch Ready</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-progress-mini">
+                            <div class="progress-circle" data-progress="90">
+                                <svg class="progress-ring" width="60" height="60">
+                                    <circle class="progress-ring-circle" stroke="var(--neon-cyan)" stroke-width="3" fill="transparent" r="25" cx="30" cy="30"/>
+                                </svg>
+                                <span class="progress-text">90%</span>
+                            </div>
+                        </div>
+                        <div class="expand-arrow">
+                            <span>▼</span>
+                        </div>
+                    </div>
+
+                    <div class="project-details">
+                        <div class="details-grid">
+                            <div class="detail-section progress-section">
+                                <h3>Development Progress</h3>
+                                <div class="progress-tracker">
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Idea</h4>
+                                            <p>Research completed</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Prototype</h4>
+                                            <p>Kernel developed</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Development</h4>
+                                            <p>Full OS built</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage completed">
+                                        <div class="stage-circle">✓</div>
+                                        <div class="stage-info">
+                                            <h4>Beta Testing</h4>
+                                            <p>Quantum labs testing</p>
+                                        </div>
+                                    </div>
+                                    <div class="progress-stage active">
+                                        <div class="stage-circle">◆</div>
+                                        <div class="stage-info">
+                                            <h4>Launch</h4>
+                                            <p>Commercial release</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section info-section">
+                                <h3>Project Information</h3>
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <h4>Tech Stack</h4>
+                                        <div class="tech-tags">
+                                            <span class="tech-tag">C++</span>
+                                            <span class="tech-tag">Assembly</span>
+                                            <span class="tech-tag">QASM</span>
+                                            <span class="tech-tag">Python</span>
+                                            <span class="tech-tag">Rust</span>
+                                        </div>
+                                    </div>
+                                    <div class="info-item">
+                                        <h4>Looking For</h4>
+                                        <ul class="needs-list">
+                                            <li>Quantum Computing Experts</li>
+                                            <li>Systems Engineers</li>
+                                            <li>DevOps Engineers</li>
+                                            <li>Technical Writers</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section leaderboard-section">
+                                <h3>Top Contributors</h3>
+                                <div class="contributors-leaderboard">
+                                    <div class="contributor-item rank-1">
+                                        <div class="contributor-rank">1</div>
+                                        <div class="contributor-avatar">
+                                            <span>QM</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Dr. Quantum Miller</div>
+                                            <div class="contributor-role">Chief Architect</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">892</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-2">
+                                        <div class="contributor-rank">2</div>
+                                        <div class="contributor-avatar">
+                                            <span>AS</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Anna Schmidt</div>
+                                            <div class="contributor-role">Kernel Developer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">567</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="contributor-item rank-3">
+                                        <div class="contributor-rank">3</div>
+                                        <div class="contributor-avatar">
+                                            <span>TP</span>
+                                        </div>
+                                        <div class="contributor-info">
+                                            <div class="contributor-name">Tommy Park</div>
+                                            <div class="contributor-role">Systems Engineer</div>
+                                        </div>
+                                        <div class="contributor-stats">
+                                            <div class="stat-item">
+                                                <span class="stat-value">423</span>
+                                                <span class="stat-label">Commits</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-section links-section">
+                                <h3>Project Links</h3>
+                                <div class="project-links">
+                                    <a href="#" class="project-link github">
+                                        <div class="link-icon">⚡</div>
+                                        <span>GitHub Repository</span>
+                                    </a>
+                                    <a href="#" class="project-link discord">
+                                        <div class="link-icon">◆</div>
+                                        <span>Discord Community</span>
+                                    </a>
+                                    <a href="#" class="project-link docs">
+                                        <div class="link-icon">📋</div>
+                                        <span>Technical Docs</span>
+                                    </a>
+                                    <a href="#" class="project-link website">
+                                        <div class="link-icon">🌐</div>
+                                        <span>Official Website</span>
+                                    </a>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="btn-primary">JOIN PROJECT</button>
+                                    <button class="btn-secondary">CONTRIBUTE</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">LEGYN</div>
+                    <p>Building the future through community collaboration</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Platform</h4>
+                        <a href="projects.html">Projects</a>
+                        <a href="bounties.html">Bounties</a>
+                        <a href="cyberpunk-landing.html#community">Community</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="#">Help</a>
+                        <a href="#">Docs</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LEGYN. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">Discord</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="cyberpunk-script.js"></script>
+    <script src="projects-script.js"></script>
+    <script>
+        // Debug: Check if function is available
+        console.log('toggleProject function available:', typeof window.toggleProject);
+
+        // Backup inline handler
+        if (typeof window.toggleProject === 'undefined') {
+            window.toggleProject = function(element) {
+                const projectRow = element.closest('.project-row');
+                if (projectRow) {
+                    projectRow.classList.toggle('expanded');
+                    console.log('Inline handler: Toggled project');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
