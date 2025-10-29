@@ -57,6 +57,124 @@ function closeMissionModal() {
     }
 }
 
+// Lead capture form modal (Formspree)
+window.openLeadForm = function(sourceLabel) {
+    // Prevent multiple modals
+    if (document.querySelector('.form-modal')) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'form-modal';
+    modal.innerHTML = `
+        <div class="form-modal-content">
+            <button class="modal-close" aria-label="Close" onclick="window.closeLeadForm()">×</button>
+            <h2 class="modal-title">
+                <span class="title-line">//</span>
+                JOIN LEGYN
+                <span class="title-line">//</span>
+            </h2>
+            <form action="https://formspree.io/f/mnnodwpr" method="POST" class="lead-form">
+                <input type="hidden" name="source" value="${(sourceLabel || 'Site CTA').replace(/"/g, '&quot;')}">
+                <div class="form-field">
+                    <label for="lead-name">Name</label>
+                    <input id="lead-name" name="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                    <label for="lead-email">Email</label>
+                    <input id="lead-email" name="email" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-field">
+                    <label for="lead-help">How would Legyn help you?</label>
+                    <textarea id="lead-help" name="how_legyn_helps" rows="4" placeholder="Tell us your goals..." required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary"><span>Submit</span><div class="btn-glow"></div></button>
+                    <button type="button" class="btn-secondary" onclick="window.closeLeadForm()"><span>Close</span></button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('active'), 10);
+
+    // Focus first input
+    setTimeout(() => {
+        const nameInput = modal.querySelector('#lead-name');
+        if (nameInput) nameInput.focus();
+    }, 50);
+
+    // AJAX submit to Formspree, then show next-steps popup
+    const form = modal.querySelector('.lead-form');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+            }
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData,
+                    mode: 'cors'
+                });
+
+                const container = modal.querySelector('.form-modal-content');
+                if (!container) return;
+
+                if (response.ok) {
+                    container.innerHTML = `
+                        <button class="modal-close" aria-label="Close" onclick="window.closeLeadForm()">×</button>
+                        <h2 class="modal-title">
+                            <span class="title-line">//</span>
+                            THANK YOU
+                            <span class="title-line">//</span>
+                        </h2>
+                        <div class="modal-body">
+                            <p class="mission-text">Thank you.</p>
+                            <p class="mission-text">If worthy, someone from our team will contact you shortly and schedule a series of interviews to ensure you are a perfect candidate for Legyn.</p>
+                            <p class="mission-text highlight">Welcome to the Digital Frontier.</p>
+                        </div>
+                        <button class="btn-primary" onclick="window.closeLeadForm()">CLOSE</button>
+                    `;
+                } else {
+                    container.innerHTML = `
+                        <button class=\"modal-close\" aria-label=\"Close\" onclick=\"window.closeLeadForm()\">×</button>
+                        <h2 class=\"modal-title\"><span class=\"title-line\">//</span> ERROR <span class=\"title-line\">//</span></h2>
+                        <div class=\"modal-body\">
+                            <p class=\"mission-text\">Something went wrong submitting your request. Please try again in a moment.</p>
+                        </div>
+                        <button class=\"btn-secondary\" onclick=\"window.closeLeadForm()\">CLOSE</button>
+                    `;
+                }
+            } catch (err) {
+                const container = modal.querySelector('.form-modal-content');
+                if (container) {
+                    container.innerHTML = `
+                        <button class=\"modal-close\" aria-label=\"Close\" onclick=\"window.closeLeadForm()\">×</button>
+                        <h2 class=\"modal-title\"><span class=\"title-line\">//</span> ERROR <span class=\"title-line\">//</span></h2>
+                        <div class=\"modal-body\">
+                            <p class=\"mission-text\">Network error. Please check your connection and try again.</p>
+                        </div>
+                        <button class=\"btn-secondary\" onclick=\"window.closeLeadForm()\">CLOSE</button>
+                    `;
+                }
+            }
+        });
+    }
+}
+
+window.closeLeadForm = function() {
+    const modal = document.querySelector('.form-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => modal.remove(), 300);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize navbar transparency state
@@ -119,27 +237,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Claim bounty animation
+    // Intercept bounty claim -> open lead form
     claimButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
-            const card = this.closest('.bounty-card');
-            
-            // Add claiming animation
-            this.textContent = 'CLAIMING...';
-            this.style.background = 'linear-gradient(45deg, var(--neon-cyan), var(--purple-glow))';
-            
-            setTimeout(() => {
-                this.textContent = 'CLAIMED!';
-                this.disabled = true;
-                this.style.opacity = '0.5';
-                this.style.cursor = 'not-allowed';
-                
-                // Add success glow to card
-                card.style.borderColor = 'var(--neon-cyan)';
-                card.style.boxShadow = '0 0 50px rgba(0, 255, 255, 0.5)';
-            }, 1500);
-        });
+            e.stopPropagation();
+            if (typeof window.openLeadForm === 'function') {
+                const title = this.closest('.bounty-card')?.querySelector('.bounty-title')?.textContent?.trim() || 'Bounty Claim';
+                window.openLeadForm(`Claim Bounty: ${title}`);
+            }
+        }, { capture: true });
     });
     
     // Mobile Navigation Toggle
@@ -321,6 +428,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 ripple.remove();
             }, 600);
         });
+    });
+
+    // Global CTA interception: open form for all buttons except mission button and modal-internal buttons
+    document.querySelectorAll('button').forEach(btn => {
+        const isMission = btn.classList.contains('mission-btn');
+        if (isMission) return; // leave mission statement button alone
+
+        btn.addEventListener('click', function(e) {
+            // Ignore clicks from within existing modals or if this is a modal close
+            if (this.closest('.form-modal') || this.closest('.mission-modal')) return;
+            e.preventDefault();
+            e.stopPropagation();
+            e.stopImmediatePropagation();
+
+            const label = this.textContent?.trim() || 'Button Click';
+            window.openLeadForm(label);
+        }, { capture: true });
+    });
+
+    // Featured project cards -> open form
+    document.querySelectorAll('.projects .project-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            const title = this.querySelector('.card-title')?.textContent?.trim() || 'Featured Project';
+            window.openLeadForm(`Featured Project: ${title}`);
+        }, { capture: true });
     });
     
     // Project Card Hover 3D Effect

@@ -196,30 +196,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Action button handlers
+    // Action button handlers -> open lead form modal
     const actionButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
     actionButtons.forEach(button => {
         button.addEventListener('click', function(e) {
-            e.stopPropagation(); // Prevent project expansion
+            e.stopPropagation();
             e.preventDefault();
-
-            // Add click effect
-            const originalText = this.textContent;
-            const isJoin = this.textContent.includes('JOIN');
-
-            if (isJoin) {
-                this.textContent = 'REQUEST SENT!';
-                this.style.background = 'var(--neon-cyan)';
-            } else {
-                this.textContent = 'CONTRIBUTING!';
-                this.style.background = 'var(--neon-pink)';
+            if (this.classList.contains('mission-btn')) return; // safeguard
+            const label = this.textContent?.trim() || 'Projects Action';
+            if (typeof window.openLeadForm === 'function') {
+                window.openLeadForm(`Projects: ${label}`);
             }
-
-            setTimeout(() => {
-                this.textContent = originalText;
-                this.style.background = '';
-            }, 2000);
-        });
+        }, { capture: true });
     });
 
     // Project link handlers
