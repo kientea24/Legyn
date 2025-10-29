@@ -69,7 +69,7 @@ window.openLeadForm = function(sourceLabel) {
             <button class="modal-close" aria-label="Close" onclick="window.closeLeadForm()">×</button>
             <h2 class="modal-title">
                 <span class="title-line">//</span>
-                JOIN LEGYN
+                INQUIRY
                 <span class="title-line">//</span>
             </h2>
             <form action="https://formspree.io/f/mnnodwpr" method="POST" class="lead-form">
