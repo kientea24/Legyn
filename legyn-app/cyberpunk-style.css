@@ -1787,6 +1787,65 @@ body {
   margin-top: 3rem;
 }
 
+/* Coming Soon - Blur bounty board content except heading */
+.bounties {
+  position: relative;
+}
+
+.bounties::after {
+  content: 'COMING SOON';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Orbitron', monospace;
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--neon-pink);
+  text-shadow: 
+    0 0 10px var(--neon-pink),
+    0 0 20px var(--neon-pink),
+    0 0 40px var(--neon-pink);
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  animation: pulse 2s ease-in-out infinite;
+  z-index: 100;
+  pointer-events: none;
+  user-select: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+.bounties-header {
+  filter: blur(5px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bounties-grid {
+  filter: blur(5px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bounties .bounties-footer {
+  filter: blur(5px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .nav-menu {
@@ -1852,6 +1911,11 @@ body {
   .bounties-filters {
     justify-content: center;
   }
+  
+  .bounties::after {
+    font-size: 3rem;
+    letter-spacing: 0.25rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1870,6 +1934,11 @@ body {
   .terminal-body {
     padding: 1rem;
     font-size: 0.8rem;
+  }
+  
+  .bounties::after {
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
   }
 }
 

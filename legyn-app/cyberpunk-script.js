@@ -183,13 +183,14 @@ document.addEventListener('DOMContentLoaded', function() {
         navbar.classList.add('transparent');
     }
     
-    // Bounty Board Functionality
+    // Bounty Board Functionality - COMING SOON (currently disabled)
     const filterButtons = document.querySelectorAll('.filter-btn');
     const bountyCards = document.querySelectorAll('.bounty-card');
     const sortSelect = document.querySelector('.sort-select');
     const claimButtons = document.querySelectorAll('.bounty-claim-btn');
     
-    // Filter bounties by category
+    // Disabled for coming soon - Filter bounties by category
+    /*
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             // Update active state
@@ -208,8 +209,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
+    */
     
-    // Sort bounties
+    // Disabled for coming soon - Sort bounties
+    /*
     if (sortSelect) {
         sortSelect.addEventListener('change', function() {
             const sortValue = this.value;
@@ -236,8 +239,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    */
     
-    // Intercept bounty claim -> open lead form
+    // Disabled for coming soon - Intercept bounty claim -> open lead form
+    /*
     claimButtons.forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
@@ -248,6 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }, { capture: true });
     });
+    */
     
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
