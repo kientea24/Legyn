@@ -154,6 +154,18 @@ export function OrganizationChart() {
     }
   }, [members]);
 
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isModalOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
+
   // Sort children by score (descending) whenever members change
   useEffect(() => {
     setMembers(prevMembers => {
@@ -292,6 +304,19 @@ export function OrganizationChart() {
     setEditingParentId(null);
   };
 
+  // Close modal handler
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setEditingMember(null);
+    setEditingParentId(null);
+    setFormData({
+      name: '',
+      role: '',
+      score: 0,
+      parentId: '1',
+    });
+  };
+
   const renderMember = (member: Member, parentId: string) => {
     const hasChildren = member.children.length > 0;
     const isExpanded = expandedNodes.has(member.id);
@@ -377,104 +402,220 @@ export function OrganizationChart() {
         {members.map(member => renderMember(member, member.id))}
       </div>
 
-      {/* Add/Edit Member Modal */}
+      {/* Add/Edit Member Modal - Floating Overlay */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-slate-900">
-                {editingMember ? 'Edit Member' : 'Add New Member'}
-              </h3>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="text-slate-400 hover:text-slate-600 transition-colors"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
+        <>
+          {/* Dark overlay backdrop - covers entire viewport */}
+          <div
+            onClick={handleCloseModal}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              width: '100vw',
+              height: '100vh',
+              backgroundColor: 'rgba(0, 0, 0, 0.7)',
+              zIndex: 9998,
+            }}
+            className="animate-fade-in"
+          />
 
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="Enter member name"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Role
-                </label>
-                <select
-                  value={formData.role}
-                  onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          {/* Modal container - centered and floating */}
+          <div
+            style={{
+              position: 'fixed',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              zIndex: 9999,
+              width: '100%',
+              maxWidth: '28rem',
+              padding: '0 1rem',
+              boxSizing: 'border-box',
+            }}
+            className="animate-scale-in"
+          >
+            <div
+              style={{
+                backgroundColor: 'white',
+                borderRadius: '0.75rem',
+                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+                padding: '1.5rem',
+              }}
+            >
+              {/* Modal Header */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid #e2e8f0' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0f172a', margin: 0 }}>
+                  {editingMember ? 'Edit Member' : 'Add New Member'}
+                </h3>
+                <button
+                  onClick={handleCloseModal}
+                  style={{
+                    padding: '0.5rem',
+                    borderRadius: '0.5rem',
+                    border: 'none',
+                    backgroundColor: 'transparent',
+                    color: '#94a3b8',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  aria-label="Close modal"
                 >
-                  <option value="Core Contributor">Core Contributor</option>
-                  <option value="Member">Member</option>
-                  <option value="Lurker">Lurker</option>
-                </select>
+                  <X className="w-5 h-5" />
+                </button>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Score/Points
-                </label>
-                <input
-                  type="number"
-                  value={formData.score}
-                  onChange={(e) => setFormData({ ...formData, score: Number(e.target.value) })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="0"
-                  min="0"
-                />
+              {/* Modal Body */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#334155', marginBottom: '0.5rem' }}>
+                    Name <span style={{ color: '#ef4444' }}>*</span>
+                  </label>
+                  <input
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '0.5rem',
+                      fontSize: '1rem',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                    }}
+                    placeholder="Enter member name"
+                    autoFocus
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#334155', marginBottom: '0.5rem' }}>
+                    Role
+                  </label>
+                  <select
+                    value={formData.role}
+                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '0.5rem',
+                      fontSize: '1rem',
+                      backgroundColor: 'white',
+                      cursor: 'pointer',
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <option value="Core Contributor">Core Contributor</option>
+                    <option value="Member">Member</option>
+                    <option value="Lurker">Lurker</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#334155', marginBottom: '0.5rem' }}>
+                    Score/Points
+                  </label>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    value={formData.score}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/[^0-9]/g, '');
+                      setFormData({ ...formData, score: value === '' ? 0 : Number(value) });
+                    }}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '0.5rem',
+                      fontSize: '1rem',
+                      outline: 'none',
+                      boxSizing: 'border-box',
+                    }}
+                    placeholder="0"
+                  />
+                </div>
+
+                <div>
+                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: 500, color: '#334155', marginBottom: '0.5rem' }}>
+                    Category
+                  </label>
+                  <select
+                    value={formData.parentId}
+                    onChange={(e) => setFormData({ ...formData, parentId: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem 1rem',
+                      border: '1px solid #cbd5e1',
+                      borderRadius: '0.5rem',
+                      fontSize: '1rem',
+                      backgroundColor: editingMember ? '#f1f5f9' : 'white',
+                      cursor: editingMember ? 'not-allowed' : 'pointer',
+                      boxSizing: 'border-box',
+                    }}
+                    disabled={!!editingMember}
+                  >
+                    {members.map((category: Member) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                  {editingMember && (
+                    <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.5rem' }}>Category cannot be changed when editing</p>
+                  )}
+                </div>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">
-                  Category
-                </label>
-                <select
-                  value={formData.parentId}
-                  onChange={(e) => setFormData({ ...formData, parentId: e.target.value })}
-                  className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  disabled={!!editingMember} // Can't change category when editing
+              {/* Modal Footer */}
+              <div style={{ display: 'flex', gap: '0.75rem', marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid #e2e8f0' }}>
+                <button
+                  onClick={handleSaveMember}
+                  style={{
+                    flex: 1,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem',
+                    padding: '0.75rem 1rem',
+                    backgroundColor: '#2563eb',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '0.5rem',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                  }}
                 >
-                  {members.map(category => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-                {editingMember && (
-                  <p className="text-xs text-slate-500 mt-1">Category cannot be changed when editing</p>
-                )}
+                  <Save className="w-4 h-4" />
+                  {editingMember ? 'Save Changes' : 'Add Member'}
+                </button>
+                <button
+                  onClick={handleCloseModal}
+                  style={{
+                    padding: '0.75rem 1.5rem',
+                    backgroundColor: 'white',
+                    color: '#334155',
+                    border: '1px solid #cbd5e1',
+                    borderRadius: '0.5rem',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Cancel
+                </button>
               </div>
-            </div>
-
-            <div className="flex gap-3 mt-6">
-              <button
-                onClick={handleSaveMember}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <Save className="w-4 h-4" />
-                {editingMember ? 'Save Changes' : 'Add Member'}
-              </button>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 border border-slate-300 text-slate-700 rounded-lg hover:bg-slate-50 transition-colors"
-              >
-                Cancel
-              </button>
             </div>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
