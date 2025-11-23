@@ -244,7 +244,7 @@ transition: all 0.3s ease;
 
 ## File References
 - **Main Stylesheet**: `/legyn-app/cyberpunk-style.css`
-- **HTML Template**: `/legyn-app/cyberpunk-landing.html`
+- **HTML Template**: `/index.html` (root homepage)
 - **JavaScript**: `/legyn-app/cyberpunk-script.js`
 
 ---

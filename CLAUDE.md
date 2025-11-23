@@ -9,12 +9,18 @@ This is the LEGYN Cyberpunk Landing Page - a static website with a Cyberpunk 207
 ## Project Structure
 
 ```
-/legyn-app/
-├── cyberpunk-landing.html    # Main HTML file (entry point)
-├── cyberpunk-script.js        # JavaScript functionality
-├── cyberpunk-style.css        # Main stylesheet
-├── package.json               # Node.js project configuration
-└── node_modules/              # Dependencies (live-server for development)
+/
+├── index.html                 # Main HTML file (homepage entry point)
+├── CNAME                      # GitHub Pages custom domain config
+└── legyn-app/
+    ├── cyberpunk-script.js    # JavaScript functionality
+    ├── cyberpunk-style.css    # Main stylesheet
+    ├── mission-statement.html  # Mission statement page
+    ├── projects.html          # Projects listing page
+    ├── projects-script.js     # Projects page JavaScript
+    ├── projects-style.css     # Projects page stylesheet
+    ├── package.json           # Node.js project configuration
+    └── node_modules/          # Dependencies (live-server for development)
 ```
 
 ## Development Commands
@@ -35,7 +41,7 @@ npm run lint
 
 ## Key Implementation Details
 
-### HTML Structure (cyberpunk-landing.html)
+### HTML Structure (index.html)
 - Single-page application with sections for hero, projects, community, and about
 - Uses semantic HTML5 elements
 - Integrates Google Fonts (Orbitron, Rajdhani)

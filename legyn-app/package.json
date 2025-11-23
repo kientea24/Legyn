@@ -2,10 +2,10 @@
   "name": "legyn-cyberpunk-landing",
   "version": "1.0.0",
   "description": "Cyberpunk 2077 inspired landing page for LEGYN community",
-  "main": "cyberpunk-landing.html",
+  "main": "../index.html",
   "scripts": {
-    "dev": "live-server --port=3000 --open=cyberpunk-landing.html --no-browser",
-    "start": "live-server --port=3000 --open=cyberpunk-landing.html",
+    "dev": "live-server .. --port=3000 --open=index.html --no-browser",
+    "start": "live-server .. --port=3000 --open=index.html",
     "build": "echo 'No build process needed for static files'",
     "lint": "echo 'No linting configured'"
   },
