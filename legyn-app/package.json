@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "live-server .. --port=3000 --open=index.html --no-browser",
     "start": "live-server .. --port=3000 --open=index.html",
+    "dev:agenda": "cd ../Legyn_agenda && npm run dev",
     "build": "echo 'No build process needed for static files'",
     "lint": "echo 'No linting configured'"
   },
