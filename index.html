@@ -1,22 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LEGYN</title>
-    <meta http-equiv="refresh" content="0; url=legyn-app/cyberpunk-landing.html" />
-    <script>
-      (function(){
-        var target = 'legyn-app/cyberpunk-landing.html';
-        if (location.pathname && !location.pathname.endsWith('/')) {
-          // In case of custom domain root, ensure relative redirect
-        }
-        location.replace(target);
-      })();
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGYN - Community Built Startups</title>
+    <link rel="stylesheet" href="legyn-app/cyberpunk-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <p>Redirecting to LEGYN… <a href="legyn-app/cyberpunk-landing.html">Click here if not redirected</a>.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="/" style="text-decoration: none;">
+                    <span class="logo-text">LEGYN</span>
+                    <span class="logo-subtitle">// COMMUNITY BUILT</span>
+                </a>
+            </div>
+            <div class="nav-menu">
+                <!--
+                <a href="#bounties" class="nav-link">BOUNTIES</a>
+                <a href="legyn-app/projects.html" class="nav-link">PROJECTS</a>
+                <a href="#community" class="nav-link">COMMUNITY</a>
+                <a href="#about" class="nav-link">ABOUT</a>
+                -->
+                <button class="nav-button">JOIN NOW</button>
+                
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="neon-particles"></div>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title clickable-title" data-text="JOIN THE REVOLUTION">
+                    <span class="glitch" data-text="JOIN THE">JOIN THE</span>
+                    <span class="glitch" data-text="REVOLUTION">REVOLUTION</span>
+                    
+                </h1>
+                <p class="hero-subtitle">
+                    Build loud. Ship fast. Break their rules. 
+                    The ultimate open-source community where ideas become <span class="highlight">INEVITABLE</span>
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn-primary">
+                        <span>START PROJECT</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn-secondary">
+                        <span>JOIN COMMUNITY</span>
+                    </button>
+                </div>
+                <!--
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">2,847</span>
+                        <span class="stat-label">Active Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">15K+</span>
+                        <span class="stat-label">Developers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">1.2M</span>
+                        <span class="stat-label">Commits</span>
+                    </div>
+                -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Purpose Section -->
+    <section id="purpose" class="purpose-section">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="title-line">//</span>
+                OUR PURPOSE
+                <span class="title-line">//</span>
+            </h2>
+
+            <div class="purpose-cards">
+                <!-- Card 1: Built for Dreamers -->
+                <div class="purpose-card">
+                    <div class="card-number">01</div>
+                    <h3 class="card-title">Network, Talent, & Experience</h3>
+                    <p class="card-description">
+                        You've got the vision. We've got the connects. From Idea to Launch, we're the unfair advantage you've been missing.
+                        
+                    </p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Card 2: Fearless & Transparent -->
+                <div class="purpose-card">
+                    <div class="card-number">02</div>
+                    <h3 class="card-title">Discipline & Momentum</h3>
+                    <p class="card-description">
+                        Ever given up on a project? Struggling with productivity? Looking for a change? Rebuild it here; be the best version of yourself.
+                    </p>
+                    <div class="card-glow"></div>
+                </div>
+
+                <!-- Card 3: Community Over Competition -->
+                <div class="purpose-card">
+                    <div class="card-number">03</div>
+                    <h3 class="card-title">Celebrate Wins Together</h3>
+                    <p class="card-description">
+                        When someone cracks growth, they show you the playbook. Your wins become our case studies. Our exits become your roadmap.
+                    </p>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+
+            <div class="purpose-cta">
+                <button class="btn-primary mission-btn" onclick="viewMissionStatement()">
+                    <span>VIEW MISSION STATEMENT</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bounties Section -->
+    <section id="bounties" class="bounties">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="title-line">//</span>
+                BOUNTY BOARD
+                <span class="title-line">//</span>
+            </h2>
+            <div class="bounties-header">
+                <div class="bounties-filters">
+                    <button class="filter-btn active" data-filter="all">ALL</button>
+                    <button class="filter-btn" data-filter="development">DEVELOPMENT</button>
+                    <button class="filter-btn" data-filter="design">DESIGN</button>
+                    <button class="filter-btn" data-filter="marketing">MARKETING</button>
+                    <button class="filter-btn" data-filter="bug">BUG FIX</button>
+                </div>
+                <div class="bounties-sort">
+                    <select class="sort-select">
+                        <option value="reward">Highest Reward</option>
+                        <option value="newest">Newest First</option>
+                        <option value="urgent">Most Urgent</option>
+                    </select>
+                </div>
+            </div>
+            <div class="bounties-grid">
+                <div class="bounty-card" data-category="development">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">NeuroLink AI</span>
+                            <span class="bounty-urgency urgent">URGENT</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">$500</span>
+                            <span class="reward-type">USD</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Implement WebSocket Real-time Data Sync</h3>
+                    <p class="bounty-description">Need to implement WebSocket connection for real-time data synchronization between neural interface and cloud backend.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">WebSocket</span>
+                        <span class="bounty-tag">Node.js</span>
+                        <span class="bounty-tag">Real-time</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>3 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>2 days left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+
+                <div class="bounty-card" data-category="bug">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">CyberVault</span>
+                            <span class="bounty-urgency high">HIGH</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">300</span>
+                            <span class="reward-type">POINTS</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Fix Memory Leak in Encryption Module</h3>
+                    <p class="bounty-description">Critical memory leak occurring in the AES-256 encryption module during batch processing operations.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">C++</span>
+                        <span class="bounty-tag">Memory Management</span>
+                        <span class="bounty-tag">Security</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>5 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>1 day left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+
+                <div class="bounty-card" data-category="design">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">QuantumOS</span>
+                            <span class="bounty-urgency medium">MEDIUM</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">$250</span>
+                            <span class="reward-type">USD</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Design New Dashboard UI Components</h3>
+                    <p class="bounty-description">Create cyberpunk-themed UI components for the quantum computing dashboard including charts and data visualizations.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">Figma</span>
+                        <span class="bounty-tag">UI/UX</span>
+                        <span class="bounty-tag">Dashboard</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>8 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>5 days left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+
+                <div class="bounty-card" data-category="marketing">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">DataMesh</span>
+                            <span class="bounty-urgency low">LOW</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">150</span>
+                            <span class="reward-type">POINTS</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Create Twitter Thread on Launch</h3>
+                    <p class="bounty-description">Write and publish an engaging Twitter thread about our DataMesh v2.0 launch highlighting key features and benefits.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">Twitter</span>
+                        <span class="bounty-tag">Content</span>
+                        <span class="bounty-tag">Social Media</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>12 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>7 days left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+
+                <div class="bounty-card" data-category="development">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">NeonDB</span>
+                            <span class="bounty-urgency high">HIGH</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">$750</span>
+                            <span class="reward-type">USD</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Optimize Database Query Performance</h3>
+                    <p class="bounty-description">Optimize complex JOIN queries in PostgreSQL that are causing performance bottlenecks in production environment.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">PostgreSQL</span>
+                        <span class="bounty-tag">Performance</span>
+                        <span class="bounty-tag">Database</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>2 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>3 days left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+
+                <div class="bounty-card" data-category="development">
+                    <div class="bounty-header">
+                        <div class="bounty-project">
+                            <span class="project-name">SynthWave</span>
+                            <span class="bounty-urgency medium">MEDIUM</span>
+                        </div>
+                        <div class="bounty-reward">
+                            <span class="reward-amount">500</span>
+                            <span class="reward-type">POINTS</span>
+                        </div>
+                    </div>
+                    <h3 class="bounty-title">Integrate Spotify API for Music Streaming</h3>
+                    <p class="bounty-description">Implement Spotify Web API integration to enable music streaming and playlist management in our synthwave player.</p>
+                    <div class="bounty-tags">
+                        <span class="bounty-tag">API Integration</span>
+                        <span class="bounty-tag">JavaScript</span>
+                        <span class="bounty-tag">Spotify</span>
+                    </div>
+                    <div class="bounty-footer">
+                        <div class="bounty-stats">
+                            <span class="stat-item">
+                                <span class="stat-icon">👤</span>
+                                <span>6 applicants</span>
+                            </span>
+                            <span class="stat-item">
+                                <span class="stat-icon">⏰</span>
+                                <span>4 days left</span>
+                            </span>
+                        </div>
+                        <button class="bounty-claim-btn">CLAIM BOUNTY</button>
+                    </div>
+                </div>
+            </div>
+            <div class="bounties-footer">
+                <button class="btn-secondary large">VIEW ALL BOUNTIES</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="title-line">//</span>
+                FEATURED PROJECTS
+                <span class="title-line">//</span>
+            </h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="card-header">
+                        <div class="card-status active"></div>
+                        <div class="card-type">Events Curator</div>
+                    </div>
+                    <h3 class="card-title">Beeda</h3>
+                    <p class="card-description">The private network for founders building $100B+ companies in India</p>
+                    <div class="card-tech">
+                        <span>Network</span>
+                        <span>Investors</span>
+                        <span>Founders</span>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span>12</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👥</span>
+                            <span>47</span>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <div class="card-status recruiting"></div>
+                        <div class="card-type">OPEN</div>
+                    </div>
+                    <h3 class="card-title">CyberVault</h3>
+                    <p class="card-description">Next-gen decentralized storage platform with quantum encryption</p>
+                    <div class="card-tech">
+                        <span>Rust</span>
+                        <span>Blockchain</span>
+                        <span>WebGL</span>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span>1.8k</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👥</span>
+                            <span>23</span>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <div class="card-status active"></div>
+                        <div class="card-type">STARTUP</div>
+                    </div>
+                    <h3 class="card-title">QuantumOS</h3>
+                    <p class="card-description">Operating system designed for quantum computing environments</p>
+                    <div class="card-tech">
+                        <span>C++</span>
+                        <span>Assembly</span>
+                        <span>QASM</span>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span>3.2k</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👥</span>
+                            <span>89</span>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+
+                <div class="project-card">
+                    <div class="card-header">
+                        <div class="card-status recruiting"></div>
+                        <div class="card-type">IDEA</div>
+                    </div>
+                    <h3 class="card-title">MetaForge</h3>
+                    <p class="card-description">Virtual reality development platform for immersive experiences</p>
+                    <div class="card-tech">
+                        <span>C#</span>
+                        <span>Unity</span>
+                        <span>VR/AR</span>
+                    </div>
+                    <div class="card-stats">
+                        <div class="stat-item">
+                            <span class="stat-icon">⭐</span>
+                            <span>892</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-icon">👥</span>
+                            <span>12</span>
+                        </div>
+                    </div>
+                    <div class="card-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section id="why-join" class="why-join">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="title-line">//</span>
+                WHY JOIN LEGYN
+                <span class="title-line">//</span>
+            </h2>
+            <div class="why-join-content">
+                <div class="why-join-intro">
+                    <p class="intro-text">
+                        LEGYN was created for the <span class="highlight-text">hungry</span>, the <span class="highlight-text">lost</span>,
+                        the ones who just want to do things for the
+                        <span class="highlight-text">hell of it</span>!
+                    </p>
+                </div>
+                <div class="why-join-grid">
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">01</div>
+                        </div>
+                        <h3>Turn Ideas Into Reality</h3>
+                        <p>Transform your wildest concepts into working products - whether you're building the next unicorn startup or just coding for the pure thrill of creation</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">02</div>
+                        </div>
+                        <h3>Find Your Tribe</h3>
+                        <p>Connect with fellow dreamers, builders, and rebels who share your passion and will help bring your vision to life</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">03</div>
+                        </div>
+                        <h3>Discipline</h3>
+                        <p>Ever given up on a project? Struggling with productivity? We've got you covered, rebuild and become the best version of yourself here</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">04</div>
+                        </div>
+                        <h3>Community Power</h3>
+                        <p>Leverage collective skills and resources - let the community help make that dream product of yours a reality</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">05</div>
+                        </div>
+                        <h3>Earn While You Build</h3>
+                        <p>Contribute to projects, earn points and equity - your passion becomes your pathway to ownership</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon-wrapper">
+                            <div class="why-icon-text">06</div>
+                        </div>
+                        <h3>Fearless & Transparent</h3>
+                        <p>We build in public because we're not cowards. Bold transparency beats fearful hiding</p>
+                    </div>
+                </div>
+                <div class="why-join-cta">
+                    <p class="cta-text">Let the community help make that dream product of yours a reality</p>
+                    <button class="btn-primary large pulse">JOIN THE REVOLUTION</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="community">
+        <div class="section-container">
+            <h2 class="section-title">
+                <span class="title-line">//</span>
+                HOW IT WORKS
+                <span class="title-line">//</span>
+            </h2>
+            <div class="community-grid">
+                <div class="community-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>CREATE OR JOIN</h3>
+                        <p>Join the community, create your own open-source project, or contribute to an existing one that matches your passion</p>
+                        <div class="step-glow"></div>
+                    </div>
+                </div>
+                <div class="community-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>BUILD TOGETHER</h3>
+                        <p>Tackle bounties, contribute to the community, and get rewarded—from points to USDC to potential equity in the projects you help build.</p>
+                        <div class="step-glow"></div>
+                    </div>
+                </div>
+                <div class="community-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>BECOME A FOUNDER</h3>
+                        <p>Join a project's founding team and make a start-up; join Legyn's coveated core team as a member</p>
+                        <div class="step-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Section -->
+    <section class="terminal-section">
+        <div class="section-container">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="btn-close"></span>
+                        <span class="btn-minimize"></span>
+                        <span class="btn-maximize"></span>
+                    </div>
+                    <div class="terminal-title">legyn@community:~$</div>
+                </div>
+                <div class="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">legyn@community:~$</span>
+                        <span class="command">cat community_stats.txt</span>
+                    </div>
+                    <div class="terminal-output">
+                        <div class="output-line">Projects Created: <span class="highlight">2,847</span></div>
+                        <div class="output-line">Active Developers: <span class="highlight">15,234</span></div>
+                        <div class="output-line">Total Commits: <span class="highlight">1,247,892</span></div>
+                        <div class="output-line">Startups Launched: <span class="highlight">127</span></div>
+                        <div class="output-line">Success Rate: <span class="highlight">89.3%</span></div>
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">legyn@community:~$</span>
+                        <span class="command typing">join --now</span>
+                        <span class="cursor">|</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-bg">
+            <div class="circuit-pattern"></div>
+        </div>
+        <div class="section-container">
+            <h2 class="cta-title">READY TO <span class="neon-text">HACK THE FUTURE?</span></h2>
+            <p class="cta-subtitle">Join thousands of builders creating the next generation of community-driven startups</p>
+            <div class="cta-buttons">
+                <button class="btn-primary large">
+                    <span>START YOUR PROJECT</span>
+                    <div class="btn-glow"></div>
+                </button>
+                <button class="btn-secondary large">
+                    <span>EXPLORE PROJECTS</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-text">LEGYN</div>
+                    <p>Building the future through community collaboration</p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Platform</h4>
+                        <a href="#">Projects</a>
+                        <a href="#">Community</a>
+                        <a href="#">Resources</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Company</h4>
+                        <a href="#">About</a>
+                        <a href="#">Careers</a>
+                        <a href="#">Blog</a>
+                    </div>
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="#">Help</a>
+                        <a href="#">Docs</a>
+                        <a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LEGYN. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">GitHub</a>
+                    <a href="#" class="social-link">Discord</a>
+                    <a href="#" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="legyn-app/cyberpunk-script.js"></script>
 </body>
 </html>
-

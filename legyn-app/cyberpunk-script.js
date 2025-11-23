@@ -31,7 +31,7 @@ function viewMissionStatement() {
                     Together, we're not just building products—we're building the future.
                 </p>
                 <div class="modal-links">
-                    <a href="mission-statement.html" class="full-mission-link">
+                    <a href="/legyn-app/mission-statement.html" class="full-mission-link">
                         VIEW WHOLE MISSION STATEMENT →
                     </a>
                 </div>
