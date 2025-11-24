@@ -223,8 +223,8 @@ export function RolesManagement() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-slate-900">Legyn Roles & Contribution Levels</h2>
-          <p className="text-slate-600 text-sm mt-1">Define progression from Lurker to Core Contributor</p>
+          <h2 className="text-slate-900">Legyn Roles & Levels</h2>
+          <p className="text-slate-600 text-sm mt-1">Define progression of members</p>
         </div>
         <button
           onClick={handleAddRole}

@@ -37,19 +37,19 @@ const iconOptions = [
 const defaultSections: Section[] = [
   {
     id: '1',
-    title: 'DAO Hierarchy & Progression',
+    title: 'Legyn Hierarchy & Progression',
     iconName: 'Users',
     content: [
-      'The DAO operates with a merit-based hierarchy: Lurker -> Member -> Core Contributor.',
+      'Legyn operates with a merit-based hierarchy: Lurker -> Member -> Core Contributor.',
       'Lurkers are new Discord members who observe and learn before contributing.',
       'Members are invited based on Proof of Work or exceptional talent that adds immediate value.',
-      'Core Contributors are the backbone of the DAO, having proven consistent heavy contributions.',
+      'Core Contributors are the backbone of Legyn, having proven consistent heavy contributions.',
     ],
     subsections: [
       {
         title: 'Progression Path',
         content: [
-          'Join Discord as a Lurker and learn about the DAO',
+          'Join Discord as a Lurker and learn about Legyn',
           'Contribute meaningful work to demonstrate value',
           'Get invited to Member status by existing Members/Core Contributors',
           'Continue regular high-quality contributions to become Core Contributor',
@@ -64,7 +64,7 @@ const defaultSections: Section[] = [
     content: [
       'Core Contributors meet weekly for strategic discussions.',
       'Member syncs occur bi-weekly for updates and coordination.',
-      'All Hands meetings are held monthly with the entire DAO.',
+      'All Hands meetings are held monthly with the entire Legyn.',
       'All meetings are conducted via Discord voice channels.',
     ],
     subsections: [
@@ -73,7 +73,7 @@ const defaultSections: Section[] = [
         content: [
           'Core Contributors Strategy: Weekly, decision-making',
           'Member Syncs: Bi-weekly, coordination and updates',
-          'All Hands: Monthly, full DAO participation',
+          'All Hands: Monthly, full Legyn participation',
           'Onboarding Sessions: As needed for new Members',
         ],
       },
@@ -95,7 +95,7 @@ const defaultSections: Section[] = [
         content: [
           '#general: General discussion and community chat',
           '#introductions: New member welcomes',
-          '#governance: DAO decisions and proposals',
+          '#governance: Legyn decisions and proposals',
           'Project channels: Specific initiative coordination',
           'Voice channels: Meetings and real-time collaboration',
         ],
@@ -107,7 +107,7 @@ const defaultSections: Section[] = [
     title: 'Decision-Making Process',
     iconName: 'Settings',
     content: [
-      'Core Contributors make strategic decisions for the DAO.',
+      'Core Contributors make strategic decisions for Legyn.',
       'Members have input on operational matters.',
       'Major decisions use proposal and voting system.',
       'Emergency decisions can be made by 3+ Core Contributors.',
@@ -121,7 +121,7 @@ const defaultSections: Section[] = [
     content: [
       'Contributions are tracked and recognized publicly.',
       'Quality and consistency matter more than quantity.',
-      'Both DAO-specific work and relevant external work count.',
+      'Both Legyn-specific work and relevant external work count.',
       'Exceptions made for exceptional talent with clear value-add.',
     ],
     subsections: [
@@ -150,7 +150,7 @@ const defaultSections: Section[] = [
     title: 'Member Rights & Expectations',
     iconName: 'FileText',
     content: [
-      'All Members have voice in DAO discussions.',
+      'All Members have voice in Legyn discussions.',
       'Core Contributors have final say on strategic direction.',
       'Lurkers can observe but not vote on decisions.',
       'Inactive Members may be moved back to Lurker status.',
@@ -160,7 +160,7 @@ const defaultSections: Section[] = [
         title: 'Member Expectations',
         content: [
           'Active participation in Discord discussions',
-          'Regular contributions aligned with DAO goals',
+          'Regular contributions aligned with Legyn goals',
           'Respect for community culture and values',
           'Help onboard and mentor newer members',
         ],
@@ -169,9 +169,9 @@ const defaultSections: Section[] = [
         title: 'Core Contributor Expectations',
         content: [
           'Weekly participation in strategy sessions',
-          'Lead and oversee major DAO initiatives',
+          'Lead and oversee major Legyn initiatives',
           'Review and approve new Member applications',
-          'Long-term commitment to DAO success',
+          'Long-term commitment to Legyn success',
         ],
       },
     ],
@@ -387,26 +387,32 @@ export function StructureDocumentation() {
 
           return (
             <div key={section.id} className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm">
-              <div className="flex items-center justify-between p-5 hover:bg-slate-50 transition-colors">
-                <button
-                  onClick={() => toggleSection(section.id)}
-                  className="flex items-center gap-3 flex-1 text-left"
-                >
+              <div 
+                onClick={() => toggleSection(section.id)}
+                className="flex items-center hover:bg-slate-50 transition-colors min-h-[72px] cursor-pointer"
+              >
+                <div className="flex-1 flex items-center gap-3 p-5">
                   <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                     <Icon className="w-5 h-5 text-blue-600" />
                   </div>
                   <h3 className="text-slate-900">{section.title}</h3>
-                </button>
-                <div className="flex items-center gap-2">
+                </div>
+                <div className="flex items-center gap-2 pr-5 flex-shrink-0">
                   <button
-                    onClick={() => handleEditSection(section)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleEditSection(section);
+                    }}
                     className="p-1 text-slate-400 hover:text-blue-600 transition-colors"
                     title="Edit section"
                   >
                     <Edit2 className="w-4 h-4" />
                   </button>
                   <button
-                    onClick={() => handleDeleteSection(section.id)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleDeleteSection(section.id);
+                    }}
                     className="p-1 text-slate-400 hover:text-red-600 transition-colors"
                     title="Delete section"
                   >
