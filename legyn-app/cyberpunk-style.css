@@ -644,8 +644,9 @@ body {
   background: linear-gradient(135deg, rgba(10, 10, 15, 0.98), rgba(20, 20, 30, 0.98));
   border: 1px solid var(--neon-cyan);
   border-radius: 0;
-  padding: 3rem;
+  padding: 2rem;
   max-width: 600px;
+  max-height: 85vh;
   width: 90%;
   position: relative;
   transform: translateY(20px);
@@ -684,10 +685,10 @@ body {
 
 .modal-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 900;
   color: var(--neon-white);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
   display: flex;
   align-items: center;
@@ -696,31 +697,31 @@ body {
 }
 
 .modal-body {
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .mission-text {
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.8;
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
 }
 
 .mission-text.highlight {
   color: var(--neon-cyan);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   text-align: center;
   text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
   border-top: 1px solid rgba(0, 255, 255, 0.3);
-  padding-top: 1.5rem;
-  margin-top: 2rem;
+  padding-top: 1rem;
+  margin-top: 1.5rem;
 }
 
 .modal-links {
   text-align: center;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
   border-top: 1px solid rgba(255, 0, 127, 0.3);
 }
 
@@ -1939,6 +1940,37 @@ body {
   .bounties::after {
     font-size: 2rem;
     letter-spacing: 0.2rem;
+  }
+  
+  .mission-modal-content {
+    padding: 1.5rem 1rem;
+    max-height: 90vh;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modal-body {
+    margin: 1rem 0;
+  }
+  
+  .mission-text {
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+  
+  .mission-text.highlight {
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+  }
+  
+  .modal-links {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
   }
 }
 
