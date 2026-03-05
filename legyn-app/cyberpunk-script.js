@@ -193,7 +193,7 @@ window.openReferralForm = function() {
             <form action="https://formspree.io/f/xbdzrrgz" method="POST" class="lead-form referral-form" novalidate>
                 <div class="form-field">
                     <label for="referral-name">Name</label>
-                    <input id="referral-name" name="name" type="text" placeholder="Your name" required>
+                    <input id="referral-name" name="name" type="text" placeholder="Name" required>
                 </div>
                 <div class="form-field">
                     <label for="referral-email">Email</label>
@@ -201,7 +201,7 @@ window.openReferralForm = function() {
                 </div>
                 <div class="form-field">
                     <label for="referral-potential">Potential (optional)</label>
-                    <textarea id="referral-potential" name="potential" rows="4" placeholder="Describe your potential or idea..."></textarea>
+                    <textarea id="referral-potential" name="potential" rows="4" placeholder="Describe potential or idea..."></textarea>
                 </div>
                 <div class="form-actions">
                     <button type="submit" class="btn-primary"><span>Submit</span><div class="btn-glow"></div></button>
