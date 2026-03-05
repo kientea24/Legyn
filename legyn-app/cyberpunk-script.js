@@ -313,7 +313,13 @@ window.closeReferralForm = function() {
 };
 
 document.addEventListener('DOMContentLoaded', function() {
-    
+    // Open referral form when visiting with #request-referral (shareable link)
+    if (window.location.hash === '#request-referral') {
+        setTimeout(function() {
+            if (typeof window.openReferralForm === 'function') window.openReferralForm();
+        }, 100);
+    }
+
     // Initialize navbar transparency state
     const navbar = document.querySelector('.navbar');
     if (navbar && window.pageYOffset === 0) {
