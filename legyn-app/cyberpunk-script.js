@@ -175,6 +175,143 @@ window.closeLeadForm = function() {
     }
 }
 
+// Referral request form modal
+// Formspree integration: POSTs to https://formspree.io/f/xbdzrrgz; fields: name, email, potential (optional).
+window.openReferralForm = function() {
+    if (document.querySelector('.form-modal')) return;
+
+    const modal = document.createElement('div');
+    modal.className = 'form-modal';
+    modal.innerHTML = `
+        <div class="form-modal-content">
+            <button class="modal-close" aria-label="Close" onclick="window.closeReferralForm()">×</button>
+            <h2 class="modal-title">
+                <span class="title-line">//</span>
+                REQUEST A REFERRAL
+                <span class="title-line">//</span>
+            </h2>
+            <form action="https://formspree.io/f/xbdzrrgz" method="POST" class="lead-form referral-form" novalidate>
+                <div class="form-field">
+                    <label for="referral-name">Name</label>
+                    <input id="referral-name" name="name" type="text" placeholder="Your name" required>
+                </div>
+                <div class="form-field">
+                    <label for="referral-email">Email</label>
+                    <input id="referral-email" name="email" type="email" placeholder="you@example.com" required>
+                </div>
+                <div class="form-field">
+                    <label for="referral-potential">Potential (optional)</label>
+                    <textarea id="referral-potential" name="potential" rows="4" placeholder="Describe your potential or idea..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary"><span>Submit</span><div class="btn-glow"></div></button>
+                    <button type="button" class="btn-secondary" onclick="window.closeReferralForm()"><span>Close</span></button>
+                </div>
+            </form>
+        </div>
+    `;
+    document.body.appendChild(modal);
+    setTimeout(() => modal.classList.add('active'), 10);
+
+    setTimeout(() => {
+        const nameInput = modal.querySelector('#referral-name');
+        if (nameInput) nameInput.focus();
+    }, 50);
+
+    const form = modal.querySelector('.referral-form');
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const nameInput = form.querySelector('#referral-name');
+            const emailInput = form.querySelector('#referral-email');
+            const name = nameInput && nameInput.value ? nameInput.value.trim() : '';
+            const email = emailInput && emailInput.value ? emailInput.value.trim() : '';
+
+            if (!name) {
+                if (nameInput) nameInput.focus();
+                return;
+            }
+            if (!email) {
+                if (emailInput) emailInput.focus();
+                return;
+            }
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.7';
+            }
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: formData,
+                    mode: 'cors'
+                });
+
+                const container = modal.querySelector('.form-modal-content');
+                if (!container) return;
+
+                if (response.ok) {
+                    container.innerHTML = `
+                        <button class="modal-close" aria-label="Close" onclick="window.closeReferralForm()">×</button>
+                        <h2 class="modal-title">
+                            <span class="title-line">//</span>
+                            THANK YOU
+                            <span class="title-line">//</span>
+                        </h2>
+                        <div class="modal-body">
+                            <p class="mission-text">Your referral request has been submitted.</p>
+                            <p class="mission-text">We will review it and get back to you.</p>
+                        </div>
+                        <button class="btn-primary" onclick="window.closeReferralForm()">CLOSE</button>
+                    `;
+                } else {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.style.opacity = '1';
+                    }
+                    container.innerHTML = `
+                        <button class="modal-close" aria-label="Close" onclick="window.closeReferralForm()">×</button>
+                        <h2 class="modal-title"><span class="title-line">//</span> ERROR <span class="title-line">//</span></h2>
+                        <div class="modal-body">
+                            <p class="mission-text">Something went wrong. Please try again.</p>
+                        </div>
+                        <button class="btn-secondary" onclick="window.closeReferralForm()">CLOSE</button>
+                    `;
+                }
+            } catch (err) {
+                const container = modal.querySelector('.form-modal-content');
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+                if (container) {
+                    container.innerHTML = `
+                        <button class="modal-close" aria-label="Close" onclick="window.closeReferralForm()">×</button>
+                        <h2 class="modal-title"><span class="title-line">//</span> ERROR <span class="title-line">//</span></h2>
+                        <div class="modal-body">
+                            <p class="mission-text">Network error. Please check your connection and try again.</p>
+                        </div>
+                        <button class="btn-secondary" onclick="window.closeReferralForm()">CLOSE</button>
+                    `;
+                }
+            }
+        });
+    }
+};
+
+window.closeReferralForm = function() {
+    const modal = document.querySelector('.form-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        setTimeout(() => modal.remove(), 300);
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize navbar transparency state
@@ -449,6 +586,10 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopImmediatePropagation();
 
             const label = this.textContent?.trim() || 'Button Click';
+            if (label.toUpperCase().includes('REQUEST A REFERRAL')) {
+                window.openReferralForm();
+                return;
+            }
             window.openLeadForm(label);
         }, { capture: true });
     });
