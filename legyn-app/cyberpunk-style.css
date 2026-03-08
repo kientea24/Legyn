@@ -390,7 +390,7 @@ body {
 /* Our Purpose Section (intro/why we exist) */
 .our-purpose-section {
   padding: 30px 0;
-  background: var(--dark-bg);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
@@ -431,52 +431,83 @@ body {
   }
 }
 
-/* Values Section (purpose cards) */
+/* Values Section */
 .purpose-section {
   padding: 100px 0;
-  background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
 
+/* Diagonal grid */
 .purpose-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at 10% 50%, rgba(255, 0, 127, 0.08) 0%, transparent 40%),
-    radial-gradient(circle at 90% 50%, rgba(0, 255, 255, 0.08) 0%, transparent 40%);
-  animation: pulse 10s ease-in-out infinite;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  pointer-events: none;
 }
 
+/* Ambient glow bloom */
 .purpose-section::after {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(255, 0, 127, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 255, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(255, 0, 127, 0.4), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(0, 255, 255, 0.4), transparent);
-  background-repeat: repeat;
-  background-size: 200px 100px;
-  animation: float-particles 15s linear infinite;
-  opacity: 0.6;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 30%, rgba(0, 255, 255, 0.07) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 40% at 15% 80%, rgba(255, 0, 127, 0.06) 0%, transparent 100%),
+    radial-gradient(ellipse 30% 30% at 90% 15%, rgba(255, 0, 127, 0.05) 0%, transparent 100%);
+  pointer-events: none;
 }
 
 @keyframes float-particles {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(-100px);
-  }
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-100px); }
+}
+
+/* Values heading */
+.values-heading-wrapper {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.values-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: rgba(255, 0, 127, 0.5);
+  display: block;
+  margin-bottom: 0.875rem;
+  text-transform: uppercase;
+}
+
+.values-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  text-shadow: var(--text-shadow-neon);
+  display: inline-block;
+  margin: 0 0 1.25rem 0;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .values-title { font-size: 2.75rem; }
+}
+
+.values-title-rule {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-pink), var(--neon-cyan));
+  margin: 0 auto;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.5), 0 0 24px rgba(255, 0, 127, 0.3);
 }
 
 .purpose-cards {
@@ -1358,25 +1389,81 @@ body {
 /* Why Join Section */
 .why-join {
   padding: 100px 0;
-  background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
+  background: #000000;
   position: relative;
   overflow: hidden;
 }
 
+/* Diagonal stripe pattern */
 .why-join::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: -50%;
-  width: 200%;
-  height: 100%;
-  background: radial-gradient(circle at center, rgba(255, 0, 127, 0.05) 0%, transparent 70%);
-  animation: rotate 30s linear infinite;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 28px,
+    rgba(255, 0, 127, 0.028) 28px,
+    rgba(255, 0, 127, 0.028) 29px
+  );
+  pointer-events: none;
 }
 
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Ambient glow bloom */
+.why-join::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 65% 50% at 50% 85%, rgba(255, 0, 127, 0.08) 0%, transparent 100%),
+    radial-gradient(ellipse 35% 35% at 5% 15%, rgba(0, 255, 255, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 25% 30% at 95% 80%, rgba(0, 255, 255, 0.04) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Why Join heading */
+.why-join-heading-wrapper {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.why-join-label {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: rgba(0, 255, 255, 0.5);
+  display: block;
+  margin-bottom: 0.875rem;
+  text-transform: uppercase;
+}
+
+.why-join-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  background: linear-gradient(90deg, var(--neon-cyan) 0%, var(--neon-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  margin: 0 0 1.25rem 0;
+  line-height: 1;
+  filter: drop-shadow(0 0 18px rgba(255, 0, 127, 0.3));
+}
+
+@media (max-width: 768px) {
+  .why-join-title { font-size: 2.25rem; }
+}
+
+.why-join-title-rule {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-pink));
+  margin: 0 auto;
+  box-shadow: 0 0 12px rgba(255, 0, 127, 0.5), 0 0 24px rgba(0, 255, 255, 0.3);
 }
 
 .why-join-content {
