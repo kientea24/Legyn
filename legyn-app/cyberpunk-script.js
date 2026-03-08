@@ -839,10 +839,88 @@ function animateAlphabetCycle(element) {
         // Update the entire heading with the cycling text
         element.innerHTML = `<span class="glitch">${newText}</span>`;
         animationFrame++;
-        
+
         setTimeout(animate, frameDelay);
     }
-    
+
     animate();
 }
+
+// Values Carousel
+(function() {
+    var ADVANCE_MS = 4200;
+    var activeIndex = 0;
+    var timer = null;
+
+    var slides = document.querySelectorAll('.carousel-slide');
+    var navItems = document.querySelectorAll('.carousel-nav');
+    var tabs = document.querySelectorAll('.carousel-tab');
+    var dots = document.querySelectorAll('.carousel-dot');
+    var ghost = document.querySelector('.carousel-ghost');
+    var ghostNums = ['01', '02', '03'];
+
+    if (!slides.length) return;
+
+    function goTo(index) {
+        // Deactivate current
+        slides[activeIndex].classList.remove('active');
+        slides[activeIndex].classList.add('exit');
+        navItems[activeIndex].classList.remove('active');
+        tabs[activeIndex].classList.remove('active');
+        dots[activeIndex].classList.remove('active');
+
+        var prev = activeIndex;
+        setTimeout(function() {
+            slides[prev].classList.remove('exit');
+        }, 450);
+
+        activeIndex = index;
+
+        // Activate new
+        slides[activeIndex].classList.add('active');
+        navItems[activeIndex].classList.add('active');
+        tabs[activeIndex].classList.add('active');
+        dots[activeIndex].classList.add('active');
+
+        if (ghost) ghost.textContent = ghostNums[activeIndex];
+
+        // Reset progress bar animation on the new active nav item
+        var progressBar = navItems[activeIndex].querySelector('.nav-progress');
+        if (progressBar) {
+            progressBar.style.animation = 'none';
+            void progressBar.offsetHeight;
+            progressBar.style.animation = '';
+        }
+    }
+
+    function advance() {
+        goTo((activeIndex + 1) % slides.length);
+    }
+
+    function resetTimer() {
+        clearInterval(timer);
+        timer = setInterval(advance, ADVANCE_MS);
+    }
+
+    function handleClick(index) {
+        if (index !== activeIndex) {
+            goTo(index);
+            resetTimer();
+        }
+    }
+
+    navItems.forEach(function(btn, i) {
+        btn.addEventListener('click', function() { handleClick(i); });
+    });
+
+    tabs.forEach(function(btn, i) {
+        btn.addEventListener('click', function() { handleClick(i); });
+    });
+
+    dots.forEach(function(btn, i) {
+        btn.addEventListener('click', function() { handleClick(i); });
+    });
+
+    resetTimer();
+})();
 

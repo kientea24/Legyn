@@ -604,6 +604,316 @@ body {
   opacity: 0.5;
 }
 
+/* Values Carousel */
+.values-carousel {
+  border: 1px solid rgba(255, 0, 127, 0.2);
+  overflow: hidden;
+  margin: 3rem 0;
+  position: relative;
+  z-index: 1;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+/* Mobile tab strip */
+.carousel-tabs {
+  display: flex;
+  border-bottom: 1px solid rgba(255, 0, 127, 0.15);
+  background: rgba(5, 5, 10, 0.5);
+}
+
+@media (min-width: 768px) {
+  .carousel-tabs { display: none; }
+}
+
+.carousel-tab {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  background: none;
+  border: none;
+  border-right: 1px solid rgba(255, 0, 127, 0.08);
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.carousel-tab:last-child { border-right: none; }
+
+.carousel-tab.active {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 0, 127, 0.08);
+}
+
+.tab-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  color: rgba(255, 0, 127, 0.5);
+}
+
+.tab-label { font-size: 0.65rem; }
+
+/* Carousel body: sidebar + panel */
+.carousel-body {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .carousel-body { flex-direction: row; }
+}
+
+/* Desktop sidebar */
+.carousel-sidebar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .carousel-sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    flex-shrink: 0;
+    background: rgba(5, 5, 10, 0.5);
+    border-right: 1px solid rgba(255, 0, 127, 0.15);
+  }
+}
+
+.carousel-nav {
+  position: relative;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.5rem 1.25rem;
+  text-align: left;
+  cursor: pointer;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: background 0.3s ease;
+  overflow: hidden;
+}
+
+.carousel-nav:last-child { border-bottom: none; }
+.carousel-nav:hover { background: rgba(255, 0, 127, 0.03); }
+.carousel-nav.active { background: rgba(255, 0, 127, 0.06); }
+
+.nav-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: transparent;
+  transition: background 0.3s ease;
+}
+
+.carousel-nav.active .nav-bar {
+  background: var(--neon-pink);
+  box-shadow: 0 0 8px rgba(255, 0, 127, 0.8);
+}
+
+.nav-num {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 0, 127, 0.4);
+  margin-bottom: 0.375rem;
+  display: block;
+}
+
+.nav-title {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.3);
+  transition: color 0.3s ease;
+  display: block;
+  text-transform: uppercase;
+}
+
+.carousel-nav.active .nav-title { color: rgba(255, 255, 255, 0.9); }
+
+/* Auto-progress sweep bar */
+.nav-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 1.5px;
+  width: 0%;
+  background: rgba(255, 0, 127, 0.7);
+}
+
+.carousel-nav.active .nav-progress {
+  animation: navProgress 4.2s linear forwards;
+}
+
+@keyframes navProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Main content panel */
+.carousel-panel {
+  flex: 1;
+  background: rgba(10, 10, 15, 0.25);
+  min-height: 280px;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .carousel-panel { min-height: 320px; }
+}
+
+/* Ghost watermark number */
+.carousel-ghost {
+  position: absolute;
+  right: 1rem;
+  bottom: -1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 9rem;
+  font-weight: 900;
+  color: rgba(255, 0, 127, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .carousel-ghost { font-size: 13rem; }
+}
+
+/* Slides */
+.carousel-slide {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  pointer-events: none;
+  max-width: 520px;
+}
+
+@media (min-width: 768px) {
+  .carousel-slide { padding: 3rem 3.5rem; }
+}
+
+.carousel-slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.carousel-slide.exit {
+  opacity: 0;
+  transform: translateY(-18px);
+}
+
+.slide-num-badge {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 0, 127, 0.5);
+  margin-bottom: 0.875rem;
+}
+
+.slide-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .slide-title { font-size: 2.25rem; }
+}
+
+.slide-desc {
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.7;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.slide-divider {
+  height: 1px;
+  background: rgba(255, 0, 127, 0.15);
+  margin: 1.25rem 0;
+}
+
+.slide-sub {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.5rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(0, 255, 255, 0.4);
+  margin-bottom: 0.375rem;
+}
+
+.slide-tagline {
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Mobile progress dots */
+.carousel-dots {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(5, 5, 10, 0.4);
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid rgba(255, 0, 127, 0.1);
+}
+
+@media (min-width: 768px) {
+  .carousel-dots { display: none; }
+}
+
+.carousel-dot {
+  height: 3px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.15);
+  width: 0.5rem;
+  transition: all 0.5s ease;
+  padding: 0;
+}
+
+.carousel-dot.active {
+  width: 1.5rem;
+  background: var(--neon-pink);
+  box-shadow: 0 0 6px rgba(255, 0, 127, 0.7);
+}
+
 /* Purpose CTA */
 .purpose-cta {
   text-align: center;
